@@ -1,0 +1,11 @@
+pandas==2.2.2
+numpy==2.0.2
+datasets==3.5.1
+matplotlib==3.10.0
+scikit-learn==1.6.1
+seaborn==0.13.2
+spacy==3.8.5
+transformers==4.51.3
+torch==2.6.0
+umap-learn==0.5.7
+

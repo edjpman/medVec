@@ -1,8 +1,4 @@
 
-##Imports go here
-
-
-
 class CustomBERT:
 
     def __init__(self):

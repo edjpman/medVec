@@ -1,9 +1,7 @@
 
 
 
-##Imports go here
-
-
+##This class will be further developed out in the future
 
 class Evaluation:
 
