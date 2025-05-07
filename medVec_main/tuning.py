@@ -8,27 +8,66 @@ class sftTune:
 
   '''
 
-  Descriptor here
+  A class for configuring optimizers and loss functions for PyTorch models. 
 
+  
   '''
   def __init__(self,model,learn_rate):
+    '''
+    
+    Initializes the tuning functionality with the specified model and learning rate.
+
+    '''
     self.model = model
     self.learn_rate = learn_rate
 
   def adamW(self):
+    '''
+    
+    Creates an AdamW optimizer. 
+
+    Returns: The AdamW optimizer object.
+    
+    '''
     optimizer = AdamW(self.model.parameters(), lr=self.learn_rate)
     return optimizer
 
   def adam(self):
+    '''
+    
+    Creates an Adam optimizer. 
+
+    Returns: The Adam optimizer object.
+    
+    '''
     optimizer = Adam(self.model.parameters(), lr=self.learn_rate)
     return optimizer
 
   def adafactor(self):
+    '''
+    
+    Creates an Adafactor optimizer. 
+
+    Returns: The Adafactor optimizer object.
+    
+    '''
     optimizer = Adafactor(self.model.parameters(), lr=self.learn_rate)
     return optimizer
 
   def sgdM(self,momentum):
-    optimizer = SGD(self.model.parameters(), lr=self.learn_rate)
+    '''
+    
+    Creates a Stochastic Gradient Descent optimizer. 
+
+
+    Parameters:
+    - momentum: The momentum level to use with SGD.
+
+
+    Returns: The SGD optimizer object.
+    
+    '''
+    optimizer = SGD(self.model.parameters(), lr=self.learn_rate, momentum=momentum)
     return optimizer
 
   def xc_entropy(self):

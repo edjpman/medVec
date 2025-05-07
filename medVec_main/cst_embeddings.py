@@ -11,11 +11,21 @@ class cBERTbase:
 
     '''
 
-    ddddd..only hugging face models allowed at the moment
+    A class to product BERT based embeddings utilizing the `ClinicalBERT` pretrained model as the base.
+
+    Methods:
+    - mv_tokenizer: Tokenizes and formats code, initializes BERT model, returns the output embeddings.
+    - bertInst: method to acutally create the sentence level embedding. This method is used internally to the tokenizer.
+    - ttd_splits: Splits data into train/test/dev sets.
 
     '''
 
     def __init__(self, inputs, model_name="medicalai/ClinicalBERT"):
+        '''
+
+        Initializes cBERTbase by loading the ClinicalBERT model and tokenizer.
+
+        '''
         self.inputs = inputs
         self.model = AutoModel.from_pretrained(model_name)
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -24,8 +34,21 @@ class cBERTbase:
     def mv_tokenizer(self,train_texts,dev_texts,test_texts,train_labels,dev_labels,test_labels,repr='pooled'):
       '''
 
-      Descriptor here
+      Tokenizes the provided text data, feeds it through the `ClinicalBERT` model, and returns the resulting embeddings along with corresponding labels for each data split.
 
+      Parameters:
+        - train_texts: List of training text samples.
+        - dev_texts: List of tuning text samples.
+        - test_texts: List of test text samples.
+        - train_labels: Corresponding labels for training data.
+        - dev_labels: Corresponding labels for tuning data.
+        - test_labels: Corresponding labels for test data.
+        - repr: Type of sentence embedding representation to return. Either 'pooled' (mean of last hidden state) or 'cls' (CLS token embedding).
+
+        Returns:
+        - embd_splits: Dictionary containing embeddings and labels for train, dev, and test splits.
+
+        
       '''
 
       #Check if data is in a list format if not it converts to a Python list object
@@ -76,8 +99,15 @@ class cBERTbase:
     def bertInst(self,repr='pooled'):
         '''
 
-        Descriptor here
+        Generates sentencel embeddings using the `ClinicalBERT` model.
 
+        Parameters:
+        - repr: Type of sentence embedding representation to return. Either 'pooled' (mean of last hidden state) or 'cls' (CLS token embedding).
+
+        Returns:
+        - Sentence embeddings: PyTorch tensor of embeddings based on selected representation.
+
+        
         '''
 
         #Assigns the IDs and Attention mask features of the tokenized inputs to separate objects
@@ -104,7 +134,19 @@ class cBERTbase:
     def ttd_splits(self,dataset,x_col,y_col,train_prop=0.7,dev_prop=0.2,test_prop=0.1):
 
       '''
-      returns: X_train, X_dev, X_test, y_train, y_dev, y_test
+      
+      Splits the dataset into training, tuning, and testing sets.
+
+        Parameters:
+        - dataset: The dataset to be split.
+        - x_col: Column name of the text input.
+        - y_col: Column name of the label.
+        - train_prop: Proportion of data to use for training.
+        - dev_prop: Proportion of data to use for tuning.
+        - test_prop: Proportion of data to use for testing.
+
+        Returns:
+        - Dataset splits: X_train, X_dev, X_test, y_train, y_dev, y_test; those with the X prefix refer to the `x_col` argument and y with the `y_col` argument.
 
       '''
 

@@ -8,23 +8,35 @@ class mvPreproc:
 
     '''
 
-    ddddd
+    A class for preprocessing medical definition and patient text datasets for BERT modeling and classification texts.
+
+    Methods:
+    - ds_load: Loads datasets in from Hugging Face.
+    - clean_text: Regex text cleaning tool.
+    - noun_phrases: Extracts noun phrases via a spaCy model.
+    - feat_map: Maps categorical features to new labels.
+
 
     '''
 
     #Initialized spacy model for noun parsing
     def __init__(self):
+      '''
+
+      Initializes the English spaCy language model for noun phrase extraction.
+
+      '''
       self.nlp = spacy.load('en_core_web_sm')
 
     @staticmethod
     def ds_load():
       '''
 
-      Method loads in the two datasets from `Hugging Face`.
+      Loads in the two datasets from `Hugging Face`.
 
-      Inputs: No inputs required, just call the method.
+      Parameters: NONE
 
-      Returns: patient dataset, medical definition dataset as pandas dataframes.
+      Returns: patient dataset, medical definition dataset, both as pandas dataframes.
 
 
       '''
@@ -40,11 +52,13 @@ class mvPreproc:
     def clean_text(text):
       '''
 
-      Method cleans text data by removing URLs, citation marks, and HTML tagging.
+      Cleans text data by removing URLs, citation marks, and HTML tagging.
 
-      Inputs: The text to be cleaned.
+      Parameters:
+      - text: The raw text to be cleaned.
 
-      Returns: Cleaned version of the text.
+      Returns: 
+      - text: Cleaned version of the text.
 
 
       '''
@@ -60,12 +74,13 @@ class mvPreproc:
     def noun_phrases(self,text):
       '''
 
-      Method to return noun phrases from text data. This is specific to English only.
+      Extracts the noun phrases from text data. This is specific to English only.
 
+      Parameters:
+      - text: The raw text to parse nouns from.
 
-      Inputs: The text to parse nouns from.
-
-      Returns: Noun phrases from input text separaed by a |.
+      Returns: 
+      - text: Noun phrases from input text separaed by a |.
 
 
       '''
@@ -83,7 +98,10 @@ class mvPreproc:
       Example of expected mapping
       label_map = {'cat': 0, 'dog': 1, 'rabbit': 2}
 
-      Inputs: A dictionary of the old-new mapped labels, the dataset to which the mapping is applied to, the name of the column to apply the mapping to.
+      Parameters:
+      - label_map: A dictionary of the old-new mapped labels. 
+      - dataset: The pandas DataFrame to which the mapping is applied to.
+      - col: The name of the column to apply the mapping to.
 
       Returns: The dataset with the transformed column.
 
