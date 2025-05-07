@@ -13,8 +13,8 @@ To run a demo notebook of the working sentence classification model please clone
 
 ```bash
 
-git clone https://github.com/edjpman/medvec.git
-cd medvec
+git clone https://github.com/edjpman/medVec.git
+cd medVec
 docker build -t medvec-demo .
 docker run -p 8888:8888 medvec-demo
 
