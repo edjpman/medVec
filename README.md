@@ -5,37 +5,31 @@ This library allows prospective medical professionals to upskill using AI in a c
 
 *** ***
 
-Installing medVec
+## Installing medVec
 
-```{bash}
 
-#code here
+To run a demo notebook of the working sentence classification model please clone the repo, build the Docker image, and simply run it!
 
-```
 
-Please reference the Docker file for a full description of the dependencies.
+```bash
 
-*** ***
-
-## Quickstart
-
-```{python}
-
-print('See the following for a quickstart!')
+git clone https://github.com/edjpman/medvec.git
+cd medvec
+docker build -t medvec-demo .
+docker run -p 8888:8888 medvec-demo
 
 ```
 
-
 *** ***
 
-Best Use Cases
+## Best Use Cases
 
 ** List cases go here
 
 
 *** ***
 
-Additional Documentation
+## Additional Documentation
 
 Please refrence LINK for a full tutorial and walk through.
 
