@@ -71,14 +71,35 @@ class sftTune:
     return optimizer
 
   def xc_entropy(self):
+    '''
+    
+    Creates a Cross-Entropy loss function.
+
+    Returns: The Cross-Entropy Loss function object.
+
+    '''
     loss = torch.nn.CrossEntropyLoss()
     return loss
 
   def mse(self):
+    '''
+    
+    Creates a Mean Square Error (MSE) loss function.
+
+    Returns: The Mean Square Error loss function object.
+
+    '''
     loss = torch.nn.MSELoss()
     return loss
 
   def l1loss(self):
+    '''
+    
+    Creates a Mean Absolute Error (MAE) loss function.
+
+    Returns: The Mean Square Absolute loss function object.
+
+    '''
     loss = torch.nn.L1Loss()
     return loss
 
