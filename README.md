@@ -22,16 +22,10 @@ docker run -p 8888:8888 medvec-demo
 
 *** ***
 
-## Best Use Cases
+## Demo Overview
 
-** List cases go here
+Checkout this page [here](https://edjpman.github.io/medVec/)!
 
-
-*** ***
-
-## Additional Documentation
-
-Please refrence LINK for a full tutorial and walk through.
 
 
 
